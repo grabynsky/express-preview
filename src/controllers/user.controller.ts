@@ -27,7 +27,7 @@ class UserController {
     try {
       const userId = req.params.userId;
       const result = await userService.getById(userId);
-      res.status(200).json(result);
+      res.json(result);
     } catch (e) {
       next(e);
     }
@@ -47,7 +47,6 @@ class UserController {
   public async deleteById(req: Request, res: Response, next: NextFunction) {
     try {
       const userId = req.params.userId;
-
       await userService.deleteById(userId);
       res.sendStatus(204);
     } catch (e) {
